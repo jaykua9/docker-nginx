@@ -78,4 +78,6 @@ RUN set -ex \
            apt install --no-install-suggests --no-install-recommends -y /tmp/packages/nginx-module-${module}_${NGINX_VERSION}*.deb; \
        done \
     && rm -rf /tmp/packages \
-    && rm -rf /var/lib/apt/lists/
+    && rm -rf /var/lib/apt/lists/ \
+    && ln -sf /dev/stdout /var/log/nginx/image_access.log \
+    && ln -sf /dev/stdout /var/log/nginx/image_error.log
